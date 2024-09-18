@@ -1,11 +1,11 @@
-<?php 
+<?php
+require_once('includes/database.php');
 header('Content-Type: application/json');
 
 $form_data = $_POST;
 $form_id = $form_data['form_id'];
-// Fetch form validation rules
-$conn = new mysqli("localhost", "root", "", "task2");
 
+// Fetch form validation rules
 $stmt = $conn->prepare("SELECT fields, email FROM forms WHERE id = ?");
 $stmt->bind_param("i", $form_id);
 $stmt->execute();

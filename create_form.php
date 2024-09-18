@@ -5,6 +5,7 @@ Data Format:
 fields: [{FieldType, FieldName, validationRule}, email
 */
 
+require_once('includes/database.php');
 header('Content-Type: application/json');
 
 // Get JSON data from request
@@ -37,9 +38,6 @@ if ( isset($data['fields']) && is_array($data['fields']) ) {
     $fields_json = json_encode($fields);
 
     $email = isset($data['email']) ? $data['email'] : '';
-
-    //Store in the database
-    $conn = new mysqli("localhost", "root", "", "task2");
 
     $stmt = $conn->prepare("INSERT INTO forms (fields, email) VALUES (?, ?)");
     $stmt->bind_param("ss", $fields_json, $email);

@@ -39,6 +39,15 @@ foreach ($fields as $field) {
     }
 }
 
+// Custom Captcha Check
+$number1 = rand(1, 10);
+$number2 = rand(1, 5);
+$total = $number1 + $number2;
+echo '<div class="form-group">';
+echo '<label>' . $number1 . '+' . $number2 . '=' . '</label>';
+echo '<input type="number" class="form-control" name="captcha" id="captcha" data-value="' . $total .'" required>';
+echo '</div>';
+
 echo '<button type="submit" class="btn btn-primary submit_form">Submit</button>';
 echo '</form>';
 

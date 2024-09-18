@@ -2,6 +2,11 @@
 require_once('includes/database.php');
 require_once('includes/header.php');
 
+if(!isset($_GET['id'])){
+    echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
+    die;
+}
+
 $form_id = $_GET['id'];
 
 $stmt = $conn->prepare("SELECT fields FROM forms WHERE id = ?");

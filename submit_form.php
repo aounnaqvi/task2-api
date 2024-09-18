@@ -2,6 +2,11 @@
 require_once('includes/database.php');
 header('Content-Type: application/json');
 
+if(!isset($_POST)){
+    echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
+    die;
+}
+
 $form_data = $_POST;
 $form_id = $form_data['form_id'];
 
